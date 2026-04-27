@@ -36,3 +36,11 @@ This is the original PLATO concept — rooms as living workspaces where agents c
 - Telnet protocol for universal access
 - Rooms are sandboxed via tempfile + subprocess
 - Configurable via environment variables (PLATO_HOST, PLATO_PORT, PLATO_MAX_ROOMS)
+
+
+---
+
+## Fleet Context
+
+This repo is part of the [Cocapn Fleet](https://github.com/Lucineer/fleet-onboarding). See [fleet-onboarding](https://github.com/Lucineer/fleet-onboarding) for the Plato-First context architecture, bottle protocol, and onboarding guide.
+
