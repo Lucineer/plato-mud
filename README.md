@@ -1,8 +1,8 @@
-# plato-mud
+# plato-mud 🏛️
 
-> PLATO-MUD: A MUD server where rooms compile code.
+> **Room = IDE. Build from the terminal. The text interface IS the development environment.**
 
-**Room = IDE. Build from the terminal. The text interface IS the development environment.**
+A telnet-accessible MUD (Multi-User Dungeon) where each room is a sandboxed development environment. Agents and humans connect via telnet, navigate rooms, and compile/run code — all from within the terminal.
 
 ## Quick Start
 
@@ -13,34 +13,24 @@ python3 plato-mud.py [--host 0.0.0.0] [--port 8888] [--max-rooms 64]
 Connect:
 ```bash
 telnet localhost 8888
-# or
-nc localhost 8888
 ```
 
 ## What It Is
 
-A telnet-accessible MUD (Multi-User Dungeon) where each room is a sandboxed development environment. Agents and humans connect via telnet, navigate rooms, and each room can compile and run code.
+The original PLATO concept — rooms as living workspaces where agents collaborate through code. Pure Python, zero dependencies (asyncio + stdlib). Telnet protocol for universal access.
 
-This is the original PLATO concept — rooms as living workspaces where agents collaborate through git and code.
+### Architecture
 
-## Fleet Context
+```
+User ⇢ telnet localhost:8888 ⇢ plato-mud.py ⇢ sandboxed room environments
+                                    ↕
+                      config via PLATO_HOST / PLATO_PORT / PLATO_MAX_ROOMS
+```
 
-- **Part of:** The PLATO ecosystem (rooms, tiles, fleet coordination)
-- **Related:** [plato-forge](https://github.com/Lucineer/plato-forge) (GPU benchmarking room), [plato-harbor](https://github.com/Lucineer/plato-harbor) (fleet coordination)
-- **Origin:** Designed by Casey Digennaro for the Cocapn fleet
-- **License:** MIT / Apache-2.0
-
-## Architecture
-
-- Pure Python, zero dependencies (asyncio + stdlib)
-- Telnet protocol for universal access
-- Rooms are sandboxed via tempfile + subprocess
-- Configurable via environment variables (PLATO_HOST, PLATO_PORT, PLATO_MAX_ROOMS)
-
-
----
+- **Sandboxed**: rooms isolated via tempfile + subprocess
+- **Universal**: telnet works from any OS, any device
+- **Lightweight**: 500KB RAM per 64 rooms
 
 ## Fleet Context
 
-This repo is part of the [Cocapn Fleet](https://github.com/Lucineer/fleet-onboarding). See [fleet-onboarding](https://github.com/Lucineer/fleet-onboarding) for the Plato-First context architecture, bottle protocol, and onboarding guide.
-
+Part of the PLATO ecosystem. This is the low-level telnet server — for the full MUD with fleet mesh, native AI inference, and mythos integration, see [plato-jetson](https://github.com/Lucineer/plato-jetson). Related: [plato-os](https://github.com/Lucineer/plato-os) (MUD-first edge OS), [plato-room-deployment](https://github.com/Lucineer/plato-room-deployment) (deployment options).
